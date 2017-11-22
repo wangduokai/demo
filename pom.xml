@@ -32,6 +32,9 @@
         <build-plugin.asciidoctor.version>1.5.5</build-plugin.asciidoctor.version>
         <build-plugin.exec.version>1.6.0</build-plugin.exec.version>
         <build-plugin.git-commit-id.version>2.2.2</build-plugin.git-commit-id.version>
+        <docker.image.prefix>ag</docker.image.prefix>
+        <docker.plugin.version>0.4.13</docker.plugin.version>
+        <mapper.version>3.4.0</mapper.version>
         <argLine>-Dfile.encoding=UTF-8</argLine>
         <repository.url>http://192.168.103.203:8081/repository/maven-public/</repository.url>
    	 	<releases.url>http://192.168.103.203:8081/repository/maven-releases/</releases.url>
@@ -73,10 +76,6 @@
     </scm> 
     <build>
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
@@ -133,7 +132,6 @@
         <module>ms-config</module>
         <module>ms-generator</module>
         <module>ms-auth</module>
-        <module>ms-sidecar</module>
     </modules>
     <packaging>pom</packaging>
    
