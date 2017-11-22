@@ -1,7 +1,4 @@
-FROM java:8
+FROM cfmicserver1.node/tools/oracle-jdk:jdk-8u112
 VOLUME /tmp
-ADD ace-gate.jar app.jar
-ADD wait-for-it.sh /wait-for-it.sh
-RUN sh -c 'touch /app.jar'
-RUN bash -c 'chmod 777 /wait-for-it.sh'
-CMD exec java -Djava.security.egd=file:/dev/./urandom -jar /app.jar
+ADD ms-admin-1.0.0-SNAPSHOT.war /app.war
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.war"]
