@@ -15,7 +15,7 @@
         </plugin>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/ag_admin?useUnicode=true&amp;characterEncoding=UTF8"
+                        connectionURL="jdbc:mysql://192.168.103.203:3306/ms_admin?useUnicode=true&amp;characterEncoding=UTF8"
                         userId="root"
                         password="">
         </jdbcConnection>

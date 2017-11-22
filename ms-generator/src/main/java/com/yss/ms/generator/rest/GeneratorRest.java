@@ -49,7 +49,7 @@ public class GeneratorRest {
         byte[] data = generatorService.generatorCode(tableNames);
 
         response.reset();
-        response.setHeader("Content-Disposition", "attachment; filename=\"ag-admin-code.zip\"");
+        response.setHeader("Content-Disposition", "attachment; filename=\"ms-admin-code.zip\"");
         response.addHeader("Content-Length", "" + data.length);
         response.setContentType("application/octet-stream; charset=UTF-8");
 
