@@ -7,7 +7,6 @@
     <groupId>com.yss.ms</groupId>
     <artifactId>ms-security</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <url>https://github.com/wxiaoqi/ace-security</url>
     <licenses>
         <license>
             <name>Apache 2</name>
@@ -19,48 +18,93 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
+        <version>1.5.6.RELEASE</version>
     </parent>
-    <properties>
-        <docker.image.prefix>ag</docker.image.prefix>
-        <docker.plugin.version>0.4.13</docker.plugin.version>
-        <mapper.version>3.4.0</mapper.version>
+  <properties>
+        <java.version>1.8</java.version>
+        <main.basedir>${basedir}</main.basedir>
+        <spring-boot.version>1.5.6.RELEASE</spring-boot.version>
+        <spring-cloud.version>Dalston.SR3</spring-cloud.version>
+        <hystrix-dashboard.version>1.5.5</hystrix-dashboard.version>
+        <build-plugin.jacoco.version>0.7.9</build-plugin.jacoco.version>
+        <build-plugin.coveralls.version>4.3.0</build-plugin.coveralls.version>
+        <build-plugin.gpg.version>1.6</build-plugin.gpg.version>
+        <build-plugin.asciidoctor.version>1.5.5</build-plugin.asciidoctor.version>
+        <build-plugin.exec.version>1.6.0</build-plugin.exec.version>
+        <build-plugin.git-commit-id.version>2.2.2</build-plugin.git-commit-id.version>
+        <argLine>-Dfile.encoding=UTF-8</argLine>
+        <repository.url>http://192.168.103.203:8081/repository/maven-public/</repository.url>
+   	 	<releases.url>http://192.168.103.203:8081/repository/maven-releases/</releases.url>
+   		<snapshot.url>http://192.168.103.203:8081/repository/maven-snapshots/</snapshot.url>
     </properties>
-    <modules>
-        <module>ms-admin</module>
-        <module>ms-center</module>
-        <module>ms-api</module>
-        <module>ms-monitor</module>
-        <module>ms-gate</module>
-        <module>ms-common</module>
-        <module>ms-config</module>
-        <module>ms-generator</module>
-        <module>ms-auth</module>
-        <module>ms-sidecar</module>
-    </modules>
-    <packaging>pom</packaging>
-    <developers>
-        <developer>
-            <name>ace</name>
-            <email>463540703@qq.com</email>
-        </developer>
-    </developers>
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.14</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-    <!--依赖管理，用于管理spring-cloud的依赖，其中Camden.SR3是版本号-->
+      <distributionManagement>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>snapshots</name>
+      <url>${snapshot.url}</url>
+    </snapshotRepository>
+    <repository>
+      <id>releases</id>
+      <name>releases</name>
+      <url>${releases.url}</url>
+    </repository>
+  </distributionManagement>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>nexus</id>
+      <name>local private nexus</name>
+      <url>${repository.url}</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </pluginRepository>
+
+    </pluginRepositories>
+     <scm>
+        <connection>scm:git:http://192.168.103.198:10070/cfmicservice/ms-parent.git</connection>
+        <developerConnection>scm:git:ssh://git@cfmicserver1.node:cfmicservice/ms-parent.git</developerConnection>
+        <url>http://192.168.103.198:10070/cfmicservice/ms-parent</url>
+    </scm> 
+    <build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>com.netflix.hystrix</groupId>
+                <artifactId>hystrix-dashboard</artifactId>
+                <version>${hystrix-dashboard.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Dalston.SR1</version>
+                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -74,6 +118,33 @@
                 <artifactId>druid</artifactId>
                 <version>1.0.11</version>
             </dependency>
+            
         </dependencies>
     </dependencyManagement>
+	
+    
+    <modules>
+        <module>ms-admin</module>
+        <module>ms-center</module>
+        <module>ms-api</module>
+        <module>ms-monitor</module>
+        <module>ms-gate</module>
+        <module>ms-common</module>
+        <module>ms-config</module>
+        <module>ms-generator</module>
+        <module>ms-auth</module>
+        <module>ms-sidecar</module>
+    </modules>
+    <packaging>pom</packaging>
+   
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.14</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    
 </project>
