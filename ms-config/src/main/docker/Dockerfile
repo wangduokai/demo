@@ -1,5 +1,4 @@
-FROM livingobjects/jre8
+FROM cfmicserver1.node/tools/oracle-jdk:jdk-8u112
 VOLUME /tmp
-ADD ace-config.jar app.jar
-RUN bash -c 'touch /app.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ADD ms-config-1.0-SNAPSHOT.war /app.war
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.war"]
