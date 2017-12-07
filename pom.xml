@@ -52,6 +52,13 @@
       <url>${releases.url}</url>
     </repository>
   </distributionManagement>
+    <repositories>
+        <repository>
+            <id>oss</id>
+            <name>oss</name>
+            <url>https://oss.sonatype.org/content/groups/public</url>
+        </repository>
+    </repositories>
 
   <pluginRepositories>
     <pluginRepository>
@@ -69,11 +76,7 @@
     </pluginRepository>
 
     </pluginRepositories>
-     <scm>
-        <connection>scm:git:http://192.168.103.198:10070/cfmicservice/ms-parent.git</connection>
-        <developerConnection>scm:git:ssh://git@cfmicserver1.node:cfmicservice/ms-parent.git</developerConnection>
-        <url>http://192.168.103.198:10070/cfmicservice/ms-parent</url>
-    </scm> 
+    
     <build>
 		<plugins>
 			<plugin>
@@ -122,17 +125,6 @@
     </dependencyManagement>
 	
     
-    <modules>
-        <module>ms-admin</module>
-        <module>ms-center</module>
-        <module>ms-api</module>
-        <module>ms-monitor</module>
-        <module>ms-gate</module>
-        <module>ms-common</module>
-        <module>ms-config</module>
-        <module>ms-generator</module>
-        <module>ms-auth</module>
-    </modules>
     <packaging>pom</packaging>
    
     <dependencies>
