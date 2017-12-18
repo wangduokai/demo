@@ -36,9 +36,9 @@
         <docker.plugin.version>0.4.13</docker.plugin.version>
         <mapper.version>3.4.0</mapper.version>
         <argLine>-Dfile.encoding=UTF-8</argLine>
-        <repository.url>http://192.168.103.203:8081/repository/maven-public/</repository.url>
-   	 	<releases.url>http://192.168.103.203:8081/repository/maven-releases/</releases.url>
-   		<snapshot.url>http://192.168.103.203:8081/repository/maven-snapshots/</snapshot.url>
+        <repository.url>http://192.168.103.13:8081/repository/maven-public/</repository.url>
+   	 	<releases.url>http://192.168.103.13:8081/repository/maven-releases/</releases.url>
+   		<snapshot.url>http://192.168.103.13:8081/repository/maven-snapshots/</snapshot.url>
     </properties>
       <distributionManagement>
     <snapshotRepository>
